@@ -42,6 +42,7 @@ require('./routes')(app);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+//errors handling
 app.use(function(err, req, res, next){
     if (typeof err == 'number'){
         err = new HttpError(err);
