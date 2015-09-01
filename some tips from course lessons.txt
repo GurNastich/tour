@@ -1,0 +1,4 @@
+nconf - npm module for configuration
+winston - npm module for logging
+
+passportjs - for authentification via email and etc.

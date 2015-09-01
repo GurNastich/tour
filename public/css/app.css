@@ -1,0 +1,49 @@
+* {
+	margin: 0;
+}
+html, body {
+	height: 100%;
+}
+
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.nav.navbar-right {
+	margin-right: 0;
+}
+
+.navbar ul.nav .nav-app-caption {
+	font-size: 28px;
+	padding: 5px 15px;
+}
+
+.page-wrap {
+	min-height: 100%;
+	margin-bottom: -40px;
+}
+
+.page-wrap:after {
+	content: "";
+	display: block;
+}
+
+.footer, .page-wrap:after {
+	height: 40px;
+}
+
+.footer {
+	background-color: #f8f8f8;
+	border: 1px solid #e7e7e7;
+	padding: 10px 10px 0 0;
+}
+
+.container .form-new-client-wrapper {
+	padding: 10px;
+	border: 1px solid #e7e7e7;
+	margin-bottom: 15px;
+}

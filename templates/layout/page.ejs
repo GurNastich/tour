@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%=blocks.title%></title>
+
+    <link rel='stylesheet' href='/css/app.css' />
+    <link rel='stylesheet' href='/vendor/bower_components/bootstrap/dist/css/bootstrap.css'>
+    <link rel="stylesheet" href="/vendor/datepicker/css/datepicker.css">
+
+    <script src='/vendor/bower_components/jquery/dist/jquery.js'></script>
+    <script src='/vendor/bower_components/bootstrap/dist/js/bootstrap.js'></script>
+    <script src="/vendor/datepicker/js/bootstrap-datepicker.js"></script>
+  </head>
+  <body>
+    <div class="page-wrap">
+
+      <%-partial('../partials/topNavigation')%>
+
+    	<section class="container">
+
+      	<%-body -%>
+
+      </section>
+
+    </div>
+
+    <footer class="footer">
+    	<div class="pull-right">ООО Авантаж-тур 2015</div>
+    </footer>
+
+    <script>
+      $('#datepicker').datepicker();
+    </script>
+
+  </body>
+</html>
