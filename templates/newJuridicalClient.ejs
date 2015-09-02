@@ -1,0 +1,117 @@
+<% layout('layout/page') -%>
+
+<% block('title', 'Новый клиент'); -%>
+
+<h3>Новый клиент</h3>
+
+ <form class="login-form" action="/addclient" method="POST" name="add-client-form">
+
+ <div class="form-new-client-wrapper">
+    <div class="form-group row">
+      <label for="input-title" class="col-sm-1">Название</label>
+      <div class="col-sm-11">
+        <input name="title" value="" type="text" class="form-control" id="input-title" placeholder="Название">
+      </div>
+    </div>
+
+    <h4>Директор</h4>
+
+    <div class="form-group row">
+      <label for="input-surname" class="col-sm-1">Фамилия</label>
+      <div class="col-sm-3">
+        <input name="surname" value="" type="text" class="form-control" id="input-surname" placeholder="Фамилия">
+      </div>
+
+      <label for="input-name" class="col-sm-1">Имя</label>
+      <div class="col-sm-3">
+        <input name="name" value="" type="text" class="form-control" id="input-name" placeholder="Имя">
+      </div>
+
+      <label for="input-secondname" class="col-sm-1">Отчество</label>
+      <div class="col-sm-3">
+        <input name="secondname" value="" type="text" class="form-control" id="input-secondname" placeholder="Отчество">
+      </div>
+	</div>
+
+	<h4>Контактное лицо</h4>
+
+    <div class="form-group row">
+      <label for="input-surname-contact" class="col-sm-1">Фамилия</label>
+      <div class="col-sm-3">
+        <input name="surname-contact" value="" type="text" class="form-control" id="input-surname-ontact" placeholder="Фамилия">
+      </div>
+
+      <label for="input-name-contact" class="col-sm-1">Имя</label>
+      <div class="col-sm-3">
+        <input name="name-contact" value="" type="text" class="form-control" id="input-name-contact" placeholder="Имя">
+      </div>
+
+      <label for="input-secondname-contact" class="col-sm-1">Отчество</label>
+      <div class="col-sm-3">
+        <input name="secondname-contact" value="" type="text" class="form-control" id="input-secondname-contact" placeholder="Отчество">
+      </div>
+	</div>
+
+ 	<div class="form-group row">
+  	<label for="city" class="col-sm-1">Город</label>
+  		<div class="col-sm-3">
+  			<input name="city" value="" type="text" class="form-control" id="input-city" placeholder="Город">
+  		</div>
+	</div>
+
+  	  <div class="form-group row">
+  	    <label for="input-email" class="col-sm-2">Электронный адрес</label>
+  	    <div class="col-sm-4">
+  	      <input name="email" value="" type="text" class="form-control" id="input-email" placeholder="example@domen.com">
+  	    </div>
+  	    <label for="input-phone" class="col-sm-1">Телефон</label>
+  	    <div class="col-sm-5">
+  	      <input name="phone" value="" type="text" class="form-control" id="input-phone" placeholder="8-xxx-xxx-xx-xx, 123-45-67, 812-xxx-xx-xx">
+  	    </div>
+  	  </div>
+
+  	  <div class="form-group row">
+  	    <label for="input-note" class="col-sm-1">Примечание</label>
+  	    <div class="col-sm-5">
+  	      <textarea class="form-control" rows="3"></textarea>
+  	    </div>
+
+  	    <label for="input-props" class="col-sm-1">Реквизиты</label>
+  	    <div class="col-sm-5">
+  	      <textarea class="form-control" rows="3"></textarea>
+  	    </div>
+  	  </div>
+ </div> 
+	   <button type="submit" class="btn btn-primary" data-loading-text="Отправляю...">Добавить</button>
+	   <span class="help-block error"></span>
+  </form> 
+
+
+<script>
+  $(document.forms['add-client-form']).on('submit', function() {
+    var form = $(this);
+
+    $('.error', form).html('');
+    $(":submit", form).button("loading");
+
+    $.ajax({
+      url: "/newclientj",
+      data: form.serialize(),
+      method: "POST",
+      complete: function() {
+        $(":submit", form).button("reset");
+      },
+      statusCode: {
+        200: function() {
+          form.html("Клиент добавлен").addClass('alert-success');
+          window.location.href = "/newclientj";
+        },
+        403: function(jqXHR) {
+          var error = JSON.parse(jqXHR.responseText);
+          $('.error', form).html(error.message);
+        }
+      }
+    });
+    return false;
+  });
+</script>

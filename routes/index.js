@@ -6,4 +6,7 @@ module.exports = function(app) {
 	app.post('/login', require('./login').post);
 	app.post('/logout', require('./logout').post);
 	app.get('/clients', checkAuth, require('./clients').get);
+	app.get('/newclientn', require('./newNaturalClient').get);
+	app.post('/newclientn', require('./newNaturalClient').post);
+	app.get('/newclientj', require('./newJuridicalClient').get);
 };
