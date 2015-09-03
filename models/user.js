@@ -56,11 +56,12 @@ schema.statics.authorize = function(username, password, callback) {
           callback(new AuthError("Пароль неверен!"))
         }
       } else {
-        var user = new User({username: username, password: password});
-        user.save(function(err) {
-        if (err) return callback(err);
-        callback(null, user);
-      });
+        callback(new AuthError("Неизвестный пользователь"))
+      //   var user = new User({username: username, password: password});
+      //   user.save(function(err) {
+      //   if (err) return callback(err);
+      //   callback(null, user);
+      // });
       }
     }
   ], callback);

@@ -78,7 +78,6 @@
   $(document.forms['add-client-form']).on('submit', function() {
     var form = $(this);
     var serialized = form.serialize();
-debugger;
     $('.error', form).html('');
     $(":submit", form).button("loading");
 

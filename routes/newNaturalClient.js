@@ -18,7 +18,9 @@ exports.post = function(req, res, next) {
 	var client = new mongoose.models.NaturalClient({
 		name: req.body.name,
 		secondname: req.body.secondname,
-		surname: req.body.surname
+		surname: req.body.surname,
+		email: req.body.email,
+		phone: req.body.phone
 	});
 
 	client.save(function(err) {
